@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FoodFairies</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+		width: 100%;
+     }
+	#container { 
+		padding: 0px;
+		margin: 0px;
+		width: 100%;
+		position: static;
+	}	
+	
+	.heads {
+		border: 0px;
+		padding:0px;
+		width: 31%;
+		height: 100%;
+		margin: 0px;
+		float: left;
+		position: static;
+
+	}	
+	
+	.button {
+		background-color: #FFC0CB;
+		font-family:'Verdana';
+		padding: 10px;
+		height:40px;
+		margin: 140px 40px 0px 40px;
+		width:600px;
+		position: static;
+		
+	}
+	.logo {
+		padding: 10px;
+		position: static;
+
+	}
+
+
+
+
+    </style>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyMxCEgRgsRd_ZR1rvylGbEEUcBeJl6dI"></script>
+</head>
+<body>
+	<!--header-->
+	<center>
+	<div id="container">
+		<div class="heads"><button class="button" onclick="addPoint()" style="float:left"><b>Found a homeless person? Enter their location and condition by clicking here.</b></button></div>
+		<div class="heads"><img src="FoodFairies.png" style="width: 50%;" class="logo"></div>
+		<div class="heads"><button class="button" onclick="self.location='http://www.gps-coordinates.net/'" style="float:right"><b>Click here to find your coordinates.</b></button></div>
+	</div>
+	</center>
+	
+	<div id="map-canvas"></div>
+
+	<script type="text/javascript">
+	
+	//add mapp:
+	var map = new google.maps.Map(document.getElementById('map-canvas'), {
+		zoom: 3,
+		center: new google.maps.LatLng(0, 0),
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	});
+	
+		
+	//POINTS-------------------------
+		
+	var locations = [
+		//['hungry', 34.0093515, -118.49746820000001, 0],
+		//['needs blanket', 38, -119, 1],
+	];
+
+	//ADD POINT------------------
+		function addPoint() {
+			var lat = Number(prompt("Please enter latitude", "latitude"));
+			var loong = Number(prompt("Please enter longitude", "longitude"));
+			var condition = prompt("What condition is the homeless person in?", "no blanket, need food");
+			locations.push([condition, lat, loong, i+1]);
+					
+			var infowindow = new google.maps.InfoWindow();
+			
+			var marker, i; //currentId, uniqueId, id;
+				
+			//places points:
+			for (i = 0; i < locations.length; i++) {  
+				marker = new google.maps.Marker({ //makes a new marker
+				position: new google.maps.LatLng(locations[i][1], locations[i][2]), //sets position to lat and lng values
+				map: map
+				
+
+			  });
+
+			  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+				return function() {
+				  infowindow.setContent(locations[i][0]);
+				  infowindow.open(map, marker);
+				}
+			  })(marker, i));
+			}
+		}
+
+  </script>
+  </div>
+  </body>
+</html>
