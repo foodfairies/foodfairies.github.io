@@ -1,12 +1,11 @@
+<!--REAL-->
 <!DOCTYPE html>
 <html>
   <head>
     <title>FoodFairies</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-	
-	<link href="FoodFairies.png" rel="icon">
-	
+	<link href="fairy.png" rel="icon">
     <style>
       html, body, #map-canvas {
         height: 100%;
@@ -14,7 +13,7 @@
         padding: 0;
 		width: 100%;
      }
-	#container {
+	#container { 
 		padding: 0px;
 		margin: 0px;
 		width: 100%;
@@ -29,6 +28,7 @@
 		margin: 0px;
 		float: left;
 		position: static;
+
 	}	
 	
 	.button {
@@ -46,14 +46,15 @@
 		position: static;
 
 	}
+
     </style>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyMxCEgRgsRd_ZR1rvylGbEEUcBeJl6dI"></script>
 </head>
-<body>
+<body onload="initialize()">
 	<!--header-->
 	<center>
 	<div id="container">
-		<div class="heads"><button class="button" onclick="addPoint()" style="float:left"><b>Found a homeless person? Enter their location and condition by clicking here.</b></button></div>
+		<div class="heads"><button class="button" onclick="addPoint()" style="float:left"><b>Found a homeless person? Click to enter your current location.</b></button></div>
 		<div class="heads"><img src="FoodFairies.png" style="width: 50%;" class="logo"></div>
 		<div class="heads"><button class="button" onclick="self.location='FoodFairiesAboutUs.html'" style="float:right"><b>Click here to read about our mission.</b></button></div>
 	</div>
@@ -62,15 +63,17 @@
 	<div id="map-canvas"></div>
 
 	<script type="text/javascript">
-	
-	function initialize() {
-	//add mapp:
-	var map = new google.maps.Map(document.getElementById('map-canvas'), {
-		zoom: 3,
-		center: new google.maps.LatLng(0, 0),
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	});
-	//locations--------------------------
+		var map;
+		function initialize() {
+			//add mapp:
+			map = new google.maps.Map(document.getElementById('map-canvas'), {
+				zoom: 3,
+				center: new google.maps.LatLng(0, 0),
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			});
+		}
+
+		//locations--------------------------
 		var locations = [
 			//['hungry', 34.0093515, -118.49746820000001, 0],
 			//['needs blanket', 38, -119, 1],
@@ -119,8 +122,6 @@
 		}
 
   </script>
-
-
   </div>
   </body>
 </html>
