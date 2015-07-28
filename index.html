@@ -85,7 +85,7 @@
 		navigator.geolocation.getCurrentPosition(function(position) {
 			var lat = position.coords.latitude;
 			var lng = position.coords.longitude;
-			map.setCenter(new google.maps.LatLng(lat, lng)); 
+			map.setCenter(new google.maps.LatLng(0,0)); 
 			console.log("SHOW POSITION: " + lat + "  " + lng);
 			theCoords.push(lat);
 			theCoords.push(lng);
