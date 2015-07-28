@@ -39,7 +39,6 @@
 		margin: 20% 10% 0% 5%;
 		width:75%;
 		position: static;
-		
 	}
 	.logo {
 		padding: 0%;
@@ -55,7 +54,7 @@
 	<center>
 	<div id="container">
 		<div class="heads"><button class="button" onclick="addPoint()" style="float:left"><b>Click here if you see a homeless person.</b></button></div>
-		<div class="heads"><img src="FoodFairies.png" style="width: 50%;" class="logo"></div>
+		<div class="heads"><img src="FoodFairies.png" style="width: 80%;" class="logo"></div>
 		<div class="heads"><button class="button" onclick="self.location='FoodFairiesAboutUs.html'" style="float:right"><b>Click here to read about our mission.</b></button></div>
 	</div>
 	</center>
@@ -98,7 +97,7 @@
 			var theLng = theCoords[1];
 			console.log(theCoords);
 			var marker,i; //currentId, uniqueId, id;
-			var condition = prompt("What condition is the homeless person in?", "no blanket, need food");
+			var condition = prompt("What condition is the homeless person in?", "No blanket, needs food.");
 			locations.push([condition, theLat, theLng, i+1]);
 			theCoords.pop(); //removes lng in theCoords array
 			theCoords.pop(); //removes lat in theCoords array -- it is now empty
